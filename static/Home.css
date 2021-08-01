@@ -1,0 +1,124 @@
+body{
+  background:#eee;
+}
+.image_res{
+  min-height: 50px;
+  min-width: 50px;
+  max-height: 200px;
+  max-width: 200px;
+}
+.product-box {
+  padding: 0;
+  border: 1px solid #e7eaec;
+}
+.product-box:hover,
+.product-box.active {
+  border: 1px solid transparent;
+  -webkit-box-shadow: 0 3px 7px 0 #a8a8a8;
+  -moz-box-shadow: 0 3px 7px 0 #a8a8a8;
+  box-shadow: 0 3px 7px 0 #a8a8a8;
+} 
+.product-imitation {
+  text-align: center;
+  padding: 90px 0;
+  background-color: #f8f8f9;
+  color: #bebec3;
+  font-weight: 600;
+}
+.product-desc {
+  padding: 20px;
+  position: relative;
+}
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #676a6c;
+  display: block;
+  margin: 2px 0 5px 0;
+}
+.product-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1ab394;
+  padding: 6px 12px;
+  position: absolute;
+  top: -32px;
+  right: 0;
+}
+.product-detail .ibox-content {
+  padding: 30px 30px 50px 30px;
+}
+.image-imitation {
+  background-color: #f8f8f9;
+  text-align: center;
+  padding: 200px 0;
+}
+.ibox {
+  clear: both;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0;
+}
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+  height: 620px;
+}
+
+
+/* Filters */
+
+.single {
+  padding: 30px 15px;
+  background: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  margin-top: 10px;
+}
+.single h3.side-title {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 20px;
+  color: #333;
+  text-transform: uppercase; 
+}
+.single h3.side-title:after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: #ff173c;
+  display: block;
+  margin-top: 6px; 
+}
+.single ul {
+  margin-bottom: 0; 
+}
+.single li a {
+  color: #666;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 40px;
+  display: block;
+  text-decoration: none; 
+}
+.single li a:hover {
+  color: #ff173c; 
+}
+.single li:last-child a {
+  border-bottom: 0; 
+}
+.sort{
+  list-style-type: none;
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+.align-right{
+  text-align:right
+}

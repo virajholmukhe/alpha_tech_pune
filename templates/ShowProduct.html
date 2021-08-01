@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'ShowProduct.css' %}">
+
+<!-- Product Details Start -->
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Product Details</li>
+    </ol>
+    <div class="row">
+        <div class="pdetail_col col-sm-12">
+            <div class="single category">
+                <h3 class="side-title">Product Details</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                      <div class="tab-pane active"><img src="{{product.image.url}}" class="image_res"/></div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">{{product.name}}</h3>
+                    <p class="product-description">{{product.details}}</p>
+                    <h4 class="price">price: <span>{{product.price}}</span></h4>
+                    <form method="post" action="/AddToCart">
+                        {% csrf_token %}
+                        <div>
+                            <input type="hidden" name="pid" value="{{product.id}}">
+                            <input type="hidden" name="cid" value="{{product.category_id}}">
+                        </div>
+                        <div>
+                            <h5 class="qty">Quantity:
+                                <select name="qty">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </h5>
+                        </div>
+                        <div class="buttons_sub"> 
+                            <button class="add-to-cart btn btn-default" type="submit" name="action" value="add_to_cart">add to cart</button>
+                            <button class="add-to-cart btn btn-default" name="action" value="add_to_build" type="submit">add to Build</button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<!-- Product Details End -->
+
+<!-- Similar Products start -->
+
+<div class="container">
+    <div class="row">
+        <div class="pdetail_col2 col-sm-12">
+            <div class="single category">
+                <h3 class="side-title">Similar Products</h3>
+            </div>
+        </div>
+    </div>
+    {% for cats in cats %}
+    <div class="col-sm-3">
+        <div class="ibox">
+            <div class="ibox-content product-box">
+                <a href="/ProductDetails/{{cats.id}}" style="text-decoration: none;">
+                    <div class="product-imitation">
+                        <img src="{{cats.image.url}}" class="image_res">
+                    </div>
+                    <div class="product-desc">
+                        <span class="product-price">
+                            {{cats.price}} Rs
+                        </span>
+                        <small class="text-muted">
+                            {{cats.category}}
+                        </small>
+                        <div>
+                            <small class="text-muted" style="text-transform: uppercase;">
+                                {{cats.brand}}
+                            </small>
+                        </div>
+                        <div class="product-name">
+                            {{cats.name}}
+                        </div>
+                        <div class="small m-t-xs">
+                            {{cats.details}}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div> 
+
+{% endblock %}
+

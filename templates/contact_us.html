@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'contact_us.css' %}"> 
+
+<!-- Contact Us start -->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Contact-us</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="single category">
+                    <h3 class="side-title">Contact us</h3>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="6" required></textarea>
+                        </div>
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <div class="g-recaptcha" data-sitekey="key"></div>
+                        <div class="mx-auto">
+                            <button type="submit" class="btn btn-primary text-right">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default bg-light mb-3">
+                <div class="single category">
+                    <h3 class="side-title text-white text-uppercase""><i class="fa fa-home"></i> address</h3>
+                </div>
+                <div class="panel-body ">
+                    <p>
+                        Pune, Maharashtra
+                    </p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.04360422242!2d73.79292729300022!3d18.524603553592005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1627557697008!5m2!1sen!2sin" width="230" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Us end -->
+
+{% endblock %}

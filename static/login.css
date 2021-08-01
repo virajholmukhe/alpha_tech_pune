@@ -1,0 +1,101 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background:#eee;
+}
+.jumbotron {
+  margin-top: 20px;
+  margin-bottom: 1%;
+  color: brown;
+  font-family: 'Comfortaa', cursive;
+  max-height: 20%;
+  background-image: url(Images/191.png);
+  background-size: cover;
+  background-position-x: right;
+  background-color: none;
+}
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background-color: #eeee;
+}
+.formContent {
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+.formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+input[type=submit]{
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 15px 20px 20px 20px;
+}
+input[type=submit]:hover{
+  background-color: #39ace7;
+}
+input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px 5px 5px 5px;
+}
+.alert{
+  padding: 15px 32px;
+  margin: 5px;
+  width: 85%;
+  border-radius: 5px 5px 5px 5px;
+}
+  
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+*:focus {
+  outline: none;
+}
+.login_logo{
+  height: 140px;
+  width: 220px;
+}
+  

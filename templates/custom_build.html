@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'custombuild.css' %}">
+
+<!-- Custom Build Start -->
+{% if build %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="single category">
+        <h3 class="side-title">Customize your own PC</h3>
+        <span>
+          {% if messages %}
+          <div class="alert alert-danger alert-dismissible" style="width: 85%; margin: 5px 0px 5px 34px; ">
+            <button type="button" class="close" data-dismiss="alert" >&times;</button>
+            {% for msg in messages%}
+              {% if msg.tags == "error" %}
+              <strong>{{msg.tags}}! </strong> {{msg}}
+              {% elif msg.tags == "success" %}
+              <strong>{{msg.tags}}! </strong> {{msg}}
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {% for build in build %}
+    <div class="col-md-3">
+      <div class="ibox">
+        <div>
+          <form method="POST">{% csrf_token %}
+            <input type="hidden" name="bid" id="bid">
+            <div>
+              <input type="hidden" name="bid" value="{{build.product.id}}">
+              <button style="float: right; border: 0; background: none; margin: 10px 5px 0px 0px;" type="submit" name="action" value="remove"><a href=""><span class="glyphicon glyphicon-remove"></span></a></button>
+          </div>
+          </form>
+        </div>
+        <div class="ibox-content product-box">
+            <div class="product-imitation">
+              <img src="{{build.product.image.url}}" class="image_res">
+            </div>
+            <div class="product-desc">
+              <span class="product-price">
+                {{build.product.price}} Rs
+              </span>
+              <div class="product-name">
+                {{ build.category.name }}
+              </div>
+              <a href="/ProductDetails/{{build.product.id}}" style="text-decoration: none;">
+              <div class="small m-t-xs">
+                {{ build.product.name }}
+              </div>
+            </div>
+            </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% else %}
+<div class="container container1">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align: center;" >
+        <h3 >Build Your Customized Personal Computer Here</h3>
+        <img src="{% static 'Images/cart.png'%}" height="100" width="100" alt="Empty Cart">
+        <p style="margin: 20px;">Got to <a href="/">Home</a> to shop.</p>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endif %}           
+    
+
+<!-- Custom Build End -->
+
+{% endblock %}
+
+<!--
+    {% for build in build %}
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5>{{ build.category.name }}</h5>
+        </div>
+        <div class="panel-body">
+          <h5>{{ build.product.name }}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    
+  </div>
+</div>
+
+-->
+

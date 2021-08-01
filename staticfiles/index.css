@@ -1,0 +1,21 @@
+.jumbotron {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    color: aqua;
+    font-family: 'Comfortaa', cursive;
+    background: linear-gradient(90deg, rgba(108,123,128,1) 32%, rgba(125,136,184,1) 79%);
+    max-height: 20%;
+    padding: 0%;
+}
+.logo{
+    margin-bottom: 0% ;
+}
+.navbar{
+    margin: 0;
+    border-radius: 0;
+}
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}

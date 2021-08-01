@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+<!-- Jumbotron Start -->
+<div class="jumbotron">
+  <div class="container text-center">
+      <img class="logo" src="{% static 'Images/pc_vector.png' %}"><h1> Alpha Tech </h1>
+      <p>Build Your Beast Now</p>
+  </div>
+</div>
+<!-- Jumbotron End -->
+
+<!-- Password Reset Done Start -->
+
+<div class="wrapper">
+  <div class="formContent">
+        <div>
+            <img src="{% static 'Images/logo.png' %}" class="login_logo" alt="User Icon" />
+        </div>
+            <h4>Well done!</h4>
+            <p>Password Reset Complete<br>
+            <b>You can Login Now</b></p>
+        <div class="formFooter">
+            <a href="/login">Login here </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Password Reset Done End -->

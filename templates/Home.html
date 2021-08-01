@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'Home.css' %}">
+
+<!-- Jumbotron Start -->
+<div class="jumbotron">
+    <div class="container text-center">
+        <img  class="logo" src="{% static 'Images/pc_vector.png'%}" height="100" width="120"><h1> Alpha Tech </h1>
+        <p>Build Your Beast Now</p>
+    </div>
+</div>
+<!-- Jumbotron End -->
+
+<!-- Show All Product Start -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="single category">
+                <h3 class="side-title">COMPONENTS</h3>
+                <ul class="list-unstyled">
+                    {% for cat in cat %}
+                    <li><a href="/Categories/{{cat.id}}">{{cat.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="single category">
+                <h3 class="side-title">Price</h3>
+                <ul class="list-unstyled">
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="sort">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Sort by 
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/filter-by-price-low-to-high">Price: Low-High</a></li>
+                        <li><a href="/filter-by-price-high-to-low">Price: High-Low</a></li>
+                        <li><a href="/filter-by-name-a-z">Name: A-Z</a></li>
+                        <li><a href="/filter-by-name-z-a">Name: Z-A</a></li>
+                    </ul>
+                </li>
+            </div>
+            {% for item in pro%}
+            <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <a href="/ProductDetails/{{item.id}}" style="text-decoration: none;">
+                        <div class="product-imitation">
+                            <img src="{{item.image.url}}" class="image_res">
+                        </div>
+                        <div class="product-desc">
+                            <span class="product-price">
+                                {{item.price}} Rs
+                            </span>
+                            <small class="text-muted">
+                                {{item.category}}
+                            </small>
+                            <div>
+                                <small class="text-muted" style="text-transform: uppercase;">
+                                    {{item.brand}}
+                                </small>
+                            </div>
+                            <div class="product-name">
+                                {{item.name}}
+                            </div>
+                            <div class="small m-t-xs">
+                                {{item.details}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+<!-- Show All Product End -->
+{% endblock %}

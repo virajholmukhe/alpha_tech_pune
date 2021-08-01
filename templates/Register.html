@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+<!-- Jumbotron Start -->
+<div class="jumbotron">
+  <div class="container text-center">
+      <img class="logo" src="{% static 'Images/pc_vector.png' %}" height="100" width="120" ><h1> Alpha Tech </h1>
+      <p>Build Your Beast Now</p>
+  </div>
+</div>
+<!-- Jumbotron End -->
+
+<!-- Login Form Start -->
+
+<div class="wrapper">
+  <div class="formContent">
+      <div>
+        <img src="{% static 'Images/logo.png' %}" class="login_logo" alt="User Icon" />
+      </div>
+  
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="fname" placeholder="First Name">
+        <input type="text" name="lname" placeholder="Last Name">
+        <input type="text" name="uname" placeholder="Username">
+        <input type="text" name="uemail" placeholder="Email ID">
+        <input type="text" name="upass" placeholder="Password">
+        <br><span>{{exist}}</span><br>
+        <input type="submit" value="REGISTER">
+      </form>
+  
+      <div class="formFooter">
+        <a href="/login">Already registered? Login here </a>
+      </div>
+  
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Login Form End -->

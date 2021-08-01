@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+
+<!-- Jumbotron Start -->
+<div class="jumbotron">
+  <div class="container text-center">
+      <img class="logo" src="{% static 'Images/pc_vector.png' %}"><h1> Alpha Tech </h1>
+      <p>Build Your Beast Now</p>
+  </div>
+</div>
+<!-- Jumbotron End -->
+
+<!-- Login Form Start -->
+
+<div class="wrapper">
+  <div class="formContent">
+      <div>
+        <img src="{% static 'Images/logo.png' %}" class="login_logo" alt="User Icon" />
+      </div>
+  
+      <form method="POST">
+          {% csrf_token %}
+        <input type="text" id="login" name="uname" placeholder="username">
+        <input type="text" id="password" name="upass" placeholder="password">
+        {% if messages %}
+        <div class="alert alert-danger alert-dismissible" style="width: 85%; margin: 5px 0px 5px 34px; ">
+          <button type="button" class="close" data-dismiss="alert" >&times;</button>
+          {% for msg in messages%}
+            {% if msg.tags == "error" %}
+          <strong>{{msg.tags}}! </strong> {{msg}}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+        <input type="submit" value="LOG IN">
+      </form>
+  
+      <div class="formFooter">
+        <a href="/register">New ? Register Here </a>
+        <a href="/forget-password">Forgot Password?</a>
+      </div>
+  
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Login Form End -->

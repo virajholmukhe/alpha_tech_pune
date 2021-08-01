@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}"> 
+
+<!-- Profile start -->
+<div class="container">
+    <div class="main-body">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li> 
+            <li class="active">User's Profile</li>
+        </ol>
+        <div class="row gutters-sm">
+            <div class="col-md-4 ">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{% static 'Images/userlogo.png' %}" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{profile.first_name}} {{profile.last_name}}</h4>
+                                <p class="text-secondary mb-1">{{profile.occupation}}</p>
+                                <p class="text-muted font-size-sm">{{profile.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Full Name</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{profile.first_name}} {{profile.last_name}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Username</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{profile.username}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Email</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{profile.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Mobile</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{profile.phone}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Address</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{profile.address}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <a class="btn btn-info " target="__blank" href="/edit-profile">Edit</a>
+                            </div>
+                        </div>
+                    </div>             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Profile end -->
+
+{% endblock %}

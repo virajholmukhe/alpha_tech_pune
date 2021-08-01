@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'ShowCart.css' %}">
+
+<script type="text/javascript">
+    function increment(val)
+    {
+        var txtId = val;
+        var num = parseInt(document.getElementById(txtId).value);
+        if(num < 3)
+        {
+          num++;
+        }
+        
+        document.getElementById(txtId).value = num;
+    
+    }
+    function decrement(val)
+    {
+        var txtId = val;
+        var num = parseInt(document.getElementById(txtId).value);
+        if(num>1)
+        {
+          num--;
+        }
+        
+        document.getElementById(txtId).value = num;
+    }
+</script>
+
+<!-- Cart Details Start -->
+
+{% if cart %}
+<div class="card1 container">
+    <div class="card">
+        <div>
+            <h2>Shopping Cart</h2>
+        </div>
+        <div>
+        {% if messages %}
+        <div class="alert alert-danger alert-dismissible" style="width: 85%; margin: 5px 0px 5px 34px; ">
+          <button type="button" class="close" data-dismiss="alert" >&times;</button>
+          {% for msg in messages%}
+            {% if msg.tags == "error" %}
+            <strong>ERROR! </strong> {{msg}}
+            {% elif msg.tags == "success" %}
+            <strong>SUCCESS! </strong> {{msg}}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div>
+            <hr>
+        </div>
+        <div class="container-fluid">
+            {% for cart in cart %}
+            <div class="wrapper row">
+                <form method="post"> 
+                    {% csrf_token %}
+                    <div>
+                        <button style="float: right; border: 0; background: none;" type="submit" name="action" value="remove"><a href=""><span class="glyphicon glyphicon-remove"></span></a></button>
+                    </div>
+                    <div class="preview col-md-2">
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active"><img src="{{cart.product.image.url}}" class="image_res"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details col-md-10">
+                        <h3 class="product-title">{{cart.product.name}}</h3>
+                        <!--<p class="product-description">{{cart.product.details}}</p>-->
+                        <h4 class="price">price: <span>{{cart.product.price}} Rs</span></h4>
+                        <div class="qty_align">
+                            <button class="button_qty" type="button" onclick="decrement('qty{{cart.product.id}}');"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                            <input readonly class="qty" name="cart_qty" type="text" id="qty{{cart.product.id}}" value="{{cart.qty}}" size="4"/>
+                            <button class="button_qty" type="button" onclick="increment('qty{{cart.product.id}}');"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                            <button class="button btn-primary" type="submit" name="action" value="update"> Update </button>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="hidden" name="pid" value="{{cart.product.id}}"/>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <hr>
+            </div>
+            {% endfor %}
+            <div class="column">
+                <div class="payment">
+                    <h2>Price Details : </h2>
+                    <div>
+                        <h3 style="text-align: end;">Total Cart Amount: {{request.session.total}}</h3>
+                    </div>
+                    <div>
+                        <h3 style="text-align: end;">Discount: 00.00</h3>
+                    </div>
+                    <div>
+                        <h3 style="text-align: end;">Please Pay: {{request.session.total}}</h3>
+                    </div>
+                    <div style="text-align: end; margin: 30px 10px 0px 10px ;" > 
+                        <button class="btn btn-success">Make Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Details End -->
+
+<!-- Empty Cart Start -->
+
+{% else %}
+<div class="container container1">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align: center;" >
+        <h3 >Your Cart is Empty.</h3>
+        <img src="{% static 'Images/cart.png'%}" height="100" width="100" alt="Empty Cart">
+        <p style="margin: 20px;">Got to <a href="/">Home</a> to shop.</p>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endif %} 
+
+<!-- Empty Cart End -->
+
+{% endblock %}

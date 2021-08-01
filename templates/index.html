@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alpha Tech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-png" href="{% static 'Images/brand_logo.png' %}">
+    <!-- Bootstrap.css, Jquery.js, Bootstrap.js  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- CSS (Static Files) -->
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head> 
+<body>
+
+<!-- Nav Bar Start -->
+<nav class="my-navbar navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                    
+            </button>
+            <a href="/"><img src="{% static 'Images/brand_logo.png' %}" height="50" width="50" alt="LOGO"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Categories
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {% for cat in cat %}
+                        <li><a href="/Categories/{{cat.id}}">{{cat.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="/ShowBuild">Build Your Own</a></li>
+                <li><a href="/contact_us">Contact Us</a></li>
+                {% if "uname" in request.session %}
+                <li>
+                    <form class="navbar-form" role="search" method="GET" action="/search">
+                        {% csrf_token %}
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control" placeholder="Search..." name="q">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>        
+                        </div>
+                    </form>
+                </li>
+                {% else %}
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if "uname" in request.session %}
+                <li>
+                    <a><span></span>Welcome: {{request.session.uname}} </a>
+                </li>
+                <li>
+                    <a href="/ShowCart"><span class="glyphicon glyphicon-shopping-cart"></span>Cart {{count}}</a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/profile"><span class="glyphicon glyphicon-edit"></span> Profile </a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                <li>
+                    <a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Nav Bar End -->
+
+
+
+
+{% block Content %}
+
+{% endblock %}
+
+<!-- Footer start -->
+
+<section id="footer">
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <h5>Quick links</h5>
+            <div class="col-md-4">
+                <ul class="list-unstyled quick-links">
+                    <li><a href="/"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-unstyled quick-links">
+                    <li><a href="/ShowBuild"><i class="fa fa-angle-double-right"></i>Custom Build</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-unstyled quick-links">
+                    <li><a href="/contact_us"><i class="fa fa-angle-double-right"></i>Contact-us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p>Designed and developed by <a target="_blank" href="https://virajholmukhe.pythonanywhere.com/">Viraj N. Holmukhe</a></p>
+                <p class="h6">© All right Reversed.</p>
+            </div>
+            <hr>
+        </div>	
+    </div>
+</section>
+
+<!-- Footer end -->
+
+</body>
+</html>

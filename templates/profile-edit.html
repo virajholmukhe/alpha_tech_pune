@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block Content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}"> 
+
+<!-- Profile start -->
+<div class="container">
+    <div class="main-body">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="/profile">User's Profile</a></li> 
+            <li class="active">Edit Profile</li>
+        </ol>
+        <div class="row gutters-sm">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                    <form method="POST"> 
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">First Name</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="first_name" value="{{profile.first_name}}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Last Name</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="last_name" value="{{profile.last_name}}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Occupation</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="occupation" value="{{profile.occupation}}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Email</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="email" value="{{profile.email}}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Mobile</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" name="mobile" value="{{profile.phone}}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5 class="mb-0">Address</h5>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <textarea rows="3" name="address" type="text">{{profile.address}}</textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12" style="text-align: center;">
+                                <button class="btn btn-info"  type="submit" >Save</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Profile end -->
+
+{% endblock %}
